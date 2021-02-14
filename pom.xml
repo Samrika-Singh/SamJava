@@ -22,19 +22,21 @@
   </dependencies>
   <build>
     <plugins>
+      
       <plugin>
       <metadata>
-<groupId>HTTPClient</groupId>
-<artifactId>HTTPClient</artifactId>
-<version>0.3-3</version>
-<versioning>
-<versions>
-<version>0.3-3</version>
-</versions>
-</versioning>
-</metadata>
+            <groupId>HTTPClient</groupId>
+            <artifactId>HTTPClient</artifactId>
+            <version>0.3-3</version>
+       <versioning>
+          <versions>
+              <version>0.3-3</version>
+          </versions>
+       </versioning>
+    </metadata>
       </plugin>
-      <plugins>
+      
+      <plugin>
         <!-- Build an executable JAR -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
@@ -49,6 +51,7 @@
           </archive>
         </configuration>
       </plugin>
+      
     </plugins>
   </build>
 </project>
