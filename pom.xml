@@ -23,20 +23,7 @@
   <build>
     <plugins>
       
-      <plugin>
-      <metadata>
-            <groupId>HTTPClient</groupId>
-            <artifactId>HTTPClient</artifactId>
-            <version>0.3-3</version>
-       <versioning>
-          <versions>
-              <version>0.3-3</version>
-          </versions>
-       </versioning>
-    </metadata>
-      </plugin>
-      
-      <plugin>
+   <plugin>
         <!-- Build an executable JAR -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
