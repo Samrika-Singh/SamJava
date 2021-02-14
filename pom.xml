@@ -13,7 +13,7 @@
       <artifactId>httpclient</artifactId>
       <version>4.5.3</version>
     </dependency>
-    <dependencies>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
