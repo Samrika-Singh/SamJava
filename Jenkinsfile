@@ -1,34 +1,39 @@
 pipeline{
-  agent {
-  docker {
-            image 'maven:3-alpine'
-            args '-v /root/.m2:/root/.m2'
-         }
-     }
-     stages {
-           stage('Build'){
-               steps{
-                      sh 'mvn -B -DskipTests clean package'
-                    }
-              }
+  agent any
+    tools {
+              maven 'maven'
+          }
+  stages {
+            stage('Build'){
+                            steps{
+                                   sh 'mvn -B -DskipTests clean package'
+                                 }
+                          }
               stage('Test'){
-               steps{
-                      sh 'test'
-                    }
+                            steps{
+                                   sh 'mvn test'
+                                 }
               
-              post {
-               always {
-                         junit 'target/surefire-reports/*.xml'
-                    }
-                 }
-              }
-              stage('Deliver'){
-               steps{
-                      sh './Jenkins/scripts/deliver.sh'
-                    }
-              }
-              
-         }
+                            post {
+                                always {
+                                          junit 'target/surefire-reports/TEST-hello.GreeterTest.xml'
+                                       }
+                                }
+                          }
+              stage('Build-image'){
+                                   steps{
+                                            sh 'docker build -t samrika26/jen-java-app":$BUILD_NUMBER" .'
+                                        }
+                                  }
+              stage('Push-image'){
+                                   steps{
+                                           withDockerRegistry([ credentialsId: "dockerhub_id", url: "" ])
+                                                {
+                                                    sh 'docker push samrika26/jen-java-app":$BUILD_NUMBER"'
+                                                }                            
+                                        }
+                                  }
+            }
   
 
 }
