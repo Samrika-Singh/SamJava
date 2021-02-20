@@ -5,8 +5,8 @@ FROM openjdk:8-jre-alpine
 RUN mkdir /DemoOneDoocker
 
 #copy the package jar file into our docker image
-COPY *.jar /DemoOneDoocker/DemoOneDoocker.jar
+COPY *.jar /DemoOneDoocker/demoonedoocker.jar
 
 #run the jar which we copied to DemoOneDoocker
-CMD java-jar /DemoOneDoocker/DemoOneDoocker.jar
+CMD java-jar /DemoOneDoocker/demoonedoocker.jar
 
