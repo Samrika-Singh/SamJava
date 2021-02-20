@@ -5,7 +5,7 @@ FROM openjdk:8-jre-alpine
 RUN mkdir /App
 
 #copy the package jar file into our docker image
-COPY target/DemoOne 1.0-SNAPSHOT.jar /App1/app1.jar
+COPY target/DemoOne-1.0-SNAPSHOT.jar /App1/app1.jar
 
 #run the jar which we copied to DemoOneDoocker
 CMD java-jar /App/app.jar
