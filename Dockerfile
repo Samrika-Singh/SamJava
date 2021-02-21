@@ -8,6 +8,6 @@ RUN mkdir /App
 COPY target/DemoOne-1.0-SNAPSHOT.jar /App1/app1.jar
 
 #run the jar which we copied to DemoOneDoocker
-CMD ["java","-jar", "/App/app.jar"]
+CMD ["java","-jar", "/App1/app1.jar"]
 
 EXPOSE 8081
