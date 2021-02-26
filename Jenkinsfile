@@ -2,7 +2,7 @@ pipeline{
   
   enviroment{
     
-  IBM_CLOUD_REGION='eu-de'
+  IBM_CLOUD_REGION='eu-central'
   REGISTRY_HOSTNAME='de.icr.io'
   IKS_CLUSTER='c0sf25ud0fesivtjm07g'
   DEPLOYMENT_NAME='samikaiks-jar'
@@ -62,13 +62,14 @@ pipeline{
                                   
                   }
                                   
-              stage('Push-image-Dockerhub'){
+              stage('Push-image-ICR'){
               
                                    steps{
                                          script{
-                                                         docker.withRegistery(",registeryCredential){
-                                                          dockerImage.push()
-                                                          }                           
+                                                        docker tag <samrika26/ibm_java_app> us.icr.io/<samrika21>/<samrika22>
+                                           
+                                                         docker push <de>.icr.io/<samrika21>/<samrika22>:<1>    
+                                        
                                                }
                                        }
                                   }
