@@ -57,14 +57,12 @@ pipeline{
               stage('Build-Docker-image with Docker'){
                                    
                                    steps{
-                                         script{
-                                                    dockerImage=docker.build registery +":$BUILD_NUMBER"
-                                              }
+                                            sh 'docker build -t samrika26/ibm_java_app":$BUILD_NUMBER" .'
                                         }
                                   
                   }
                                   
-              stage('Push-image-ICR'){
+              stage('Push-image-Dockerhub'){
               
                                    steps{
                                          script{
