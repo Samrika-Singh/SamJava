@@ -32,13 +32,13 @@ pipeline{
                stage('Install IBM cloud CLI'){
     
                         steps{
-                                sh '''
+                          script{
                                       curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
                                       ibmcloud --version
                                       ibmcloud config --check-version=false
                                       ibmcloud plugin install -f kubernetes-service
                                       ibmcloud plugin install -f container-registry
-                                '''
+                               }
                               }
                           }
     
