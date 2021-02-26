@@ -33,8 +33,11 @@ pipeline{
     
                         steps{
                                 sh '''
-                                     curl -fsSL https://clis.cloud.ibm.com/install/linux|sh 
-                                     ibmcloud --version
+                                      curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
+                                      ibmcloud --version
+                                      ibmcloud config --check-version=false
+                                      ibmcloud plugin install -f kubernetes-service
+                                      ibmcloud plugin install -f container-registry
                                 '''
                               }
                           }
