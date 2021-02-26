@@ -62,14 +62,11 @@ pipeline{
                                   
                   }
                                   
-              stage('Push-image-ICR'){
+              stage('Push-Docker_image-DockerHub'){
               
                                    steps{
-                                         script{
-                                                        docker tag <samrika26/ibm_java_app> us.icr.io/<samrika21>/<samrika22>
-                                           
-                                                         docker push <de>.icr.io/<samrika21>/<samrika22>:<1>    
-                                        
+                                               withDockerRegistry([credentialsId: "dockerhub_id",url:""])
+                                               {sh 'docker push samrika26/ibm_java_app":$BUILD_NUMBER"'
                                                }
                                        }
                                   }
