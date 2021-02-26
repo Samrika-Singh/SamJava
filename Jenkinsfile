@@ -1,10 +1,12 @@
 pipeline{
+  
   enviroment{
+    
   IBM_CLOUD_REGION='eu-de'
   REGISTRY_HOSTNAME='de.icr.io'
   IKS_CLUSTER=''
   DEPLOYMENT_NAME='samiks-jar'
-  PORT='4001'
+  PORT='5000'
   }
   agent any
     tools {
@@ -35,34 +37,60 @@ pipeline{
                                      ibmcloud --version
                                 '''
                               }
-                              }
+                          }
+    
               stage('Authenticate with IBM cloud CLI'){
       
                          steps{
-                                  sh'''
-                                  ibmcloud login --apikey ${IBM_API_KEY}-r"${IBM_CLOUD_REGION}" -g
-                                  Default
+                                  sh '''
+                                       ibmcloud login --apikey ${IBM_API_KEY}-r"${IBM_CLOUD_REGION}" -g
+                                    Default
                                       ibmcloud ks cluster config --cluster ${IKS_CLUSTER}
+                                      
+                                      '''
                                }
       
       
-                               }
+                       }
     
     
-              stage('Build-Docker-image'){
+              stage('Build-Docker-image with Docker'){
+                                   
                                    steps{
-                                            sh 'docker build -t samrika26/jen-java-app":$BUILD_NUMBER" .'
+                                         script{
+                                                    dockerImage=docker.build registery +":$BUILD_NUMBER"
+                                              }
                                         }
-                                  }
-              stage('Push-Docker-image'){
+                                  
+                  }
+                                  
+              stage('Push-image-ICR'){
+              
                                    steps{
-                                           withDockerRegistry([ credentialsId: "dockerhub_id", url: "" ])
-                                                {
-                                                    sh 'docker push samrika26/jen-java-app":$BUILD_NUMBER"'
-                                                }                            
-                                        }
+                                         script{
+                                                         docker.withRegistery(",registeryCreddential){
+                                                          dockerImage.push()
+                                                          }                           
+                                               }
+                                       }
                                   }
-            }
+                                                                              
+               stage('Deploy_to_IKS'){
+                                                                             
+                                        steps{
+                                                    sh '''
+                                                    
+                                                    ibmcloud ks cluster config--cluster ${IKS_CLUSTER}
+                                                    kubectl config current-context
+                                                    kubectl create deployment ${DEPLOYMENT_NAME}
+                                                    --image=
+                                                       '''
+                                             }
+               
+                                     }                                                                
+           
+           
+           }
   
 
 }
