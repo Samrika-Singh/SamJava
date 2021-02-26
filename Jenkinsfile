@@ -68,7 +68,7 @@ pipeline{
               
                                    steps{
                                          script{
-                                                         docker.withRegistery(",registeryCreddential){
+                                                         docker.withRegistery(",registeryCredential){
                                                           dockerImage.push()
                                                           }                           
                                                }
