@@ -1,6 +1,6 @@
 pipeline{
   
-  enviroment{
+  environment{
     
   IBM_CLOUD_REGION='eu-central'
   REGISTRY_HOSTNAME='de.icr.io'
