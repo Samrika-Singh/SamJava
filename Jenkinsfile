@@ -20,12 +20,12 @@ pipeline{
                                        }
                                 }
                           }
-              stage('Build-image'){
+              stage('Build-Docker-image'){
                                    steps{
                                             sh 'docker build -t samrika26/jen-java-app":$BUILD_NUMBER" .'
                                         }
                                   }
-              stage('Push-image'){
+              stage('Push-Docker-image'){
                                    steps{
                                            withDockerRegistry([ credentialsId: "dockerhub_id", url: "" ])
                                                 {
