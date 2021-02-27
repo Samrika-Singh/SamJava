@@ -46,7 +46,7 @@ pipeline{
       
                          steps{
                                   sh '''
-                                       ibmcloud login --apikey ${IBM_API_KEY}-r"${IBM_CLOUD_REGION}" -g
+                                       ibmcloud login --apikey ${IBM_API_KEY} -r "${IBM_CLOUD_REGION}" -g
                                     Default
                                       ibmcloud ks cluster config --cluster ${IKS_CLUSTER}
                                       
