@@ -10,4 +10,4 @@ COPY target/DemoOne-1.0-SNAPSHOT.jar /App1/app1.jar
 #run the jar which we copied to DemoOneDoocker
 CMD ["java","-jar", "/App1/app1.jar"]
 
-EXPOSE 5000
+EXPOSE 8081
