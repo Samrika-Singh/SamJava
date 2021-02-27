@@ -5,7 +5,7 @@ pipeline{
   IBM_CLOUD_REGION='eu-de'
   REGISTRY_HOSTNAME='de.icr.io'
   IKS_CLUSTER='c0sf25ud0fesivtjm07g'
-  DEPLOYMENT_NAME='samikaiks-jar'
+  DEPLOYMENT_NAME='samikaaiks-jar'
   PORT='5000'
   }
   agent any
