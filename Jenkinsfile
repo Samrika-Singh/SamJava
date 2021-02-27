@@ -2,7 +2,7 @@ pipeline{
   
   environment{
     
-  IBM_CLOUD_REGION='eu-central'
+  IBM_CLOUD_REGION='eu-de'
   REGISTRY_HOSTNAME='de.icr.io'
   IKS_CLUSTER='c0sf25ud0fesivtjm07g'
   DEPLOYMENT_NAME='samikaiks-jar'
