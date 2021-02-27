@@ -5,7 +5,7 @@ pipeline{
   IBM_CLOUD_REGION='eu-de'
   REGISTRY_HOSTNAME='de.icr.io'
   IKS_CLUSTER='c0sf25ud0fesivtjm07g'
-  DEPLOYMENT_NAME='samikaaiks-jar'
+  DEPLOYMENT_NAME='samikaaaiks-jar'
   PORT='5000'
   }
   agent any
@@ -80,7 +80,7 @@ pipeline{
                                                     
                                                            ibmcloud ks cluster config --cluster ${IKS_CLUSTER}
                                                            kubectl config current-context
-                                                           kubectl create deployment ${DEPLOYMENT_NAME} --image=samrika26/appho:$BUILD_NUMBER --dry-run -o yaml>deployment.yaml
+                                                           kubectl create deployment ${DEPLOYMENT_NAME} --image=samrika26/ibm_java_app:$BUILD_NUMBER --dry-run -o yaml>deployment.yaml
                                                            kubectl apply -f deployment.yaml
                                                            kubectl rollout status deployment/${DEPLOYMENT_NAME}
                                                            kubectl create service loadbalancer ${DEPLOYMENT_NAME} --tcp=80:{PORT} --dry-run -o yaml>service.yaml
