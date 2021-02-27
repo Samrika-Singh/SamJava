@@ -78,7 +78,7 @@ pipeline{
                                         steps{
                                                     sh '''
                                                     
-                                                           ibmcloud ks cluster config--cluster ${IKS_CLUSTER}
+                                                           ibmcloud ks cluster config --cluster ${IKS_CLUSTER}
                                                            kubectl config current-context
                                                            kubectl create deployment ${DEPLOYMENT_NAME}
                                                            --image=samrika26/appho:$BUILD_NUMBER --dry-run-o yaml>deployment.yaml
