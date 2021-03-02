@@ -80,9 +80,9 @@ pipeline{
                                                     
                                                            ibmcloud ks cluster config --cluster ${IKS_CLUSTER}
                                                            kubectl config current-context
-                                                           kubectl apply -f deployment.yaml
-                                                           kubectl apply -f service.yaml
-                                                           kubectl get services -o wide
+                                                           kubectl apply -f pod-defination.yml
+                                                           
+                                                           
                                                        '''
                                              }
                
