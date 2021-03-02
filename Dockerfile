@@ -9,5 +9,5 @@ COPY target/DemoOne-1.0-SNAPSHOT.jar /App1/app1.jar
 
 #run the jar which we copied to DemoOneDoocker
 ENTRYPOINT ["java","-jar", "/App1/app1.jar"]
-CMD ["tail", "-f" "/dev/null"]
+CMD ["usr/sbin/sshd" , "-D"]
 EXPOSE 8081
