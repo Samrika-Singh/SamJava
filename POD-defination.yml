@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: POD
+metadata: myapp-pod
+  name:
+  labels:
+    app: myapp
+    type: front-end
+spec:
+  containers:
+     -name: new_im
+      image: new_im
+    
