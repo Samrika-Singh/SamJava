@@ -80,9 +80,7 @@ pipeline{
                                                     
                                                            ibmcloud ks cluster config --cluster ${IKS_CLUSTER}
                                                            kubectl config current-context
-                                                           kubectl create deployment ${DEPLOYMENT_NAME} --image=samrika26/ibm_java_app:$BUILD_NUMBER --dry-run=client -o yaml>deployment.yaml
                                                            kubectl apply -f deployment.yaml
-                                                           kubectl rollout status deployment/${DEPLOYMENT_NAME}
                                                            kubectl apply -f service.yaml
                                                            kubectl get services -o wide
                                                        '''
