@@ -7,6 +7,6 @@ metadata: myapp-pod
     type: front-end
 spec:
   containers:
-     -name: new_im
+     -name: new_im-container
       image: new_im
     
