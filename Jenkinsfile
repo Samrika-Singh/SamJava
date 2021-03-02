@@ -59,7 +59,7 @@ pipeline{
               stage('Build-Docker-image with Docker'){
                                    
                                    steps{
-                                            sh 'docker build -t samrika26/ibm_java_app":$BUILD_NUMBER" .'
+                                            sh 'docker build -t samrika26/new_im":$BUILD_NUMBER" .'
                                         }
                                   
                   }
@@ -68,7 +68,7 @@ pipeline{
               
                                    steps{
                                                withDockerRegistry([credentialsId: "dockerhub_id",url:""])
-                                               {sh 'docker push samrika26/ibm_java_app":$BUILD_NUMBER"'
+                                               {sh 'docker push samrika26/new_im":$BUILD_NUMBER"'
                                                }
                                        }
                                   }
